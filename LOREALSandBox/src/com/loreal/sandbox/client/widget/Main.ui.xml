@@ -1,0 +1,78 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p="urn:import:com.vaadin.polymer.paper.widget"
+    xmlns:i="urn:import:com.vaadin.polymer.iron.widget">
+	<ui:style>
+		.toolbar {
+			background: #4285f4 !important;
+		}
+		.header {
+			font-size: 200%;
+			margin-left: 50px;
+			background: #4285f4 !important;
+		}
+		.content {
+			padding: 15px;
+		}
+		.dialog{
+			min-width: 40%;
+		}
+		paper-icon-item {
+			position: relative;
+			overflow: hidden;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<style is='custom-style'>
+			.add {
+				position: absolute;
+				bottom: 20px;
+				right: 20px;
+				--paper-fab-background: var(--paper-red-500);
+			}
+		</style>
+        <p:PaperDrawerPanel drawerWidth="310px" ui:field="drawerPanel">
+            <div drawer="">
+                <p:PaperHeaderPanel mode="seamed">
+                    <p:PaperToolbar/>
+                    <p:PaperIconItem ui:field="home">
+                        <i:IronIcon icon="home"/>
+                        <div>Home</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
+                    <p:PaperIconItem ui:field="dashboard">
+                        <i:IronIcon icon="dashboard"/>
+                        <div>Dashboard</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
+                    <p:PaperIconItem ui:field="enhancedECommerce">
+                        <i:IronIcon src="resources/enhancedECommerce.png"/>
+                        <div>Enhanced Ecommerce</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
+                    <p:PaperIconItem ui:field="menuSettings">
+                        <i:IronIcon icon="settings"/>
+                        <div>Settings</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
+                    <p:PaperIconItem ui:field="menuAbout">
+                        <i:IronIcon icon="help"/>
+                        <div>About</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
+                </p:PaperHeaderPanel>
+            </div>
+            <div main="">
+            	<p:PaperHeaderPanel mode="seamed">
+            		<p:PaperToolbar addStyleNames="{style.toolbar}">
+            			<p:PaperIconButton ui:field="menu" icon="more-vert" attributes="paper-drawer-toggle"/>
+            			<span class="{style.header}">LOREAL Sand Box</span>
+            		</p:PaperToolbar>
+            		<g:HTMLPanel ui:field="content"  addStyleNames="{style.content} vertical center-justified layout"/>
+            	</p:PaperHeaderPanel>
+            	<p:PaperFab ui:field="addButton" icon="add" addStyleNames="add"/>
+	      </div>
+        </p:PaperDrawerPanel>
+    </g:HTMLPanel>
+</ui:UiBinder> 
