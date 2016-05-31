@@ -51,9 +51,24 @@
                         <div>Search Engine Optimisation</div>
                         <p:PaperRipple/>
                     </p:PaperIconItem>
+                    <p:PaperIconItem ui:field="media">
+                        <i:IronIcon src="resources/doubleClickIcon.png"/>
+                        <div>Media</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
+                    <p:PaperIconItem ui:field="analytics">
+                        <i:IronIcon src="resources/googleAnalyticsPremiumIcon.png"/>
+                        <div>Web Analytics</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
                     <p:PaperIconItem ui:field="enhancedECommerce">
                         <i:IronIcon src="resources/enhancedECommerce.png"/>
                         <div>Enhanced Ecommerce</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
+                    <p:PaperIconItem ui:field="tagManager">
+                        <i:IronIcon src="resources/googleTagMannagerIcon.png"/>
+                        <div>Tag Manager</div>
                         <p:PaperRipple/>
                     </p:PaperIconItem>
                     <p:PaperIconItem ui:field="menuSettings">
