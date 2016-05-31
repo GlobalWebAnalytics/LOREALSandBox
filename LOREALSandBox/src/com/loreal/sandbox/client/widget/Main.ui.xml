@@ -46,6 +46,11 @@
                         <div>Dashboard</div>
                         <p:PaperRipple/>
                     </p:PaperIconItem>
+                    <p:PaperIconItem ui:field="seo">
+                        <i:IronIcon src="resources/googleSearchConsoleIcon.png"/>
+                        <div>Search Engine Optimisation</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
                     <p:PaperIconItem ui:field="enhancedECommerce">
                         <i:IronIcon src="resources/enhancedECommerce.png"/>
                         <div>Enhanced Ecommerce</div>
