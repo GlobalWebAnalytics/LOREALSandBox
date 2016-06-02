@@ -8,5 +8,26 @@
     <script type="text/javascript" src="lorealsandbox/lorealsandbox.nocache.js"></script>
   </head>
   <body>
+  	<script type="text/javascript">
+	  	function AdBlockEnabled() {
+	  		var ad = document.createElement('ins');
+	  		ad.className = 'AdSense';
+	  		ad.style.display= 'block';
+	  		ad.style.position = 'absolute';
+	  		ad.style.top = '-1px';
+	  		ad.style.height = '1px';
+	  		document.body.appendChild(ad);
+	  		var isAdBlockEnabled = !ad.clientHeight;
+	  		document.body.removeChild(ad);
+	  		return isAdBlockEnabled;
+	  	}
+	  	var dataLayer = window["dataLayer"]||[];
+	    dataLayer.push({brand:"GWA",language:"en",country:"world",siteTypeLevel:"testing",pageCategory:"homepage",adsBlocked:AdBlockEnabled()});
+	    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-5T89DP');
+    </script>
   </body>
 </html>

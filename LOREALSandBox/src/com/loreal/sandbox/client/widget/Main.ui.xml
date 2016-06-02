@@ -19,6 +19,7 @@
 			min-width: 40%;
 		}
 		paper-icon-item {
+			cursor: pointer;
 			position: relative;
 			overflow: hidden;
 		}
@@ -32,7 +33,7 @@
 				--paper-fab-background: var(--paper-red-500);
 			}
 		</style>
-        <p:PaperDrawerPanel drawerWidth="310px" ui:field="drawerPanel">
+        <p:PaperDrawerPanel drawerWidth="350px" ui:field="drawerPanel">
             <div drawer="">
                 <p:PaperHeaderPanel mode="seamed">
                     <p:PaperToolbar/>
@@ -67,7 +68,7 @@
                         <p:PaperRipple/>
                     </p:PaperIconItem>
                     <p:PaperIconItem ui:field="tagManager">
-                        <i:IronIcon src="resources/googleTagMannagerIcon.png"/>
+                        <i:IronIcon src="resources/googleTagManagerIcon.png"/>
                         <div>Tag Manager</div>
                         <p:PaperRipple/>
                     </p:PaperIconItem>
