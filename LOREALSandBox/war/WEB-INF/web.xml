@@ -11,5 +11,16 @@
   <welcome-file-list>
     <welcome-file>LOREALSandBox.html</welcome-file>
   </welcome-file-list>
+  
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>taggingMailServiceImpl</servlet-name>
+    <servlet-class>com.loreal.sandbox.server.services.TaggingMailServiceImpl</servlet-class>
+  </servlet>
 
+  <servlet-mapping>
+    <servlet-name>taggingMailServiceImpl</servlet-name>
+    <url-pattern>/taggingMail/taggingMail</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

@@ -23,6 +23,14 @@
 			position: relative;
 			overflow: hidden;
 		}
+		iron-collapse paper-icon-item iron-icon{
+			padding-left: 32px;
+			min-width: 24px;
+			min-height: 24px;
+		}
+		.itemLabel {
+			max-width: 170px;
+		}
 	</ui:style>
 	<g:HTMLPanel>
 		<style is='custom-style'>
@@ -33,7 +41,7 @@
 				--paper-fab-background: var(--paper-red-500);
 			}
 		</style>
-        <p:PaperDrawerPanel drawerWidth="350px" ui:field="drawerPanel">
+        <p:PaperDrawerPanel drawerWidth="360px" ui:field="drawerPanel">
             <div drawer="">
                 <p:PaperHeaderPanel mode="seamed">
                     <p:PaperToolbar/>
@@ -47,16 +55,57 @@
                         <div>Dashboard</div>
                         <p:PaperRipple/>
                     </p:PaperIconItem>
+                    <p:PaperIconItem ui:field="googleTagManager">
+                        <i:IronIcon src="resources/googleTagManagerIcon.png"/>
+                        <div>Google Tag Manager</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
+                    <i:IronCollapse ui:field="collapseGoogleTagManager">
+	                    <p:PaperIconItem ui:field="gtm">
+			                <i:IronIcon src="resources/googleTagManagerIcon.png"/>
+			                <div style="max-width: 170px;">Configurations</div>
+			                <p:PaperRipple/>
+			            </p:PaperIconItem>
+					</i:IronCollapse>
                     <p:PaperIconItem ui:field="seo">
                         <i:IronIcon src="resources/googleSearchConsoleIcon.png"/>
                         <div>Search Engine Optimisation</div>
                         <p:PaperRipple/>
                     </p:PaperIconItem>
-                    <p:PaperIconItem ui:field="media">
+                    <i:IronCollapse ui:field="collapseSEO">
+	                    <p:PaperIconItem ui:field="gsc">
+			                <i:IronIcon src="resources/googleSearchConsoleIcon.png"/>
+			                <div style="max-width: 170px;">Google Search Console</div>
+			                <p:PaperRipple/>
+			            </p:PaperIconItem>
+			            <p:PaperIconItem ui:field="hubscan">
+			                <i:IronIcon src="resources/hubscan.png"/>
+			                <div style="max-width: 170px;">Hubscan - Crawler</div>
+			                <p:PaperRipple/>
+			            </p:PaperIconItem>
+					</i:IronCollapse>
+                    <p:PaperIconItem ui:field="doubleClick">
                         <i:IronIcon src="resources/doubleClickIcon.png"/>
-                        <div>Media</div>
+                        <div>DoubleClick</div>
                         <p:PaperRipple/>
                     </p:PaperIconItem>
+                    <i:IronCollapse ui:field="collapseDoubleClick">
+	                    <p:PaperIconItem ui:field="dcm">
+			                <i:IronIcon src="resources/doubleClickIcon.png"/>
+			                <div style="max-width: 170px;">DoubleClick Campaign Manager</div>
+			                <p:PaperRipple/>
+			            </p:PaperIconItem>
+			            <p:PaperIconItem ui:field="dbm">
+			                <i:IronIcon src="resources/doubleClickIcon.png"/>
+			                <div style="max-width: 170px;">DoubleClick Bid Manager</div>
+			                <p:PaperRipple/>
+			            </p:PaperIconItem>
+			            <p:PaperIconItem ui:field="ds">
+			                <i:IronIcon src="resources/doubleClickIcon.png"/>
+			                <div style="max-width: 170px;">DoubleClick Search</div>
+			                <p:PaperRipple/>
+			            </p:PaperIconItem>
+					</i:IronCollapse>
                     <p:PaperIconItem ui:field="analytics">
                         <i:IronIcon src="resources/googleAnalyticsPremiumIcon.png"/>
                         <div>Web Analytics</div>
@@ -67,9 +116,26 @@
                         <div>Enhanced Ecommerce</div>
                         <p:PaperRipple/>
                     </p:PaperIconItem>
-                    <p:PaperIconItem ui:field="tagManager">
-                        <i:IronIcon src="resources/googleTagManagerIcon.png"/>
-                        <div>Tag Manager</div>
+                    <p:PaperIconItem ui:field="test">
+                        <i:IronIcon src="resources/jenkins.png"/>
+                        <div style="max-width: 200px;">Tests - Continuous Integration Tool</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
+                    <i:IronCollapse ui:field="collapseTest">
+                    	<p:PaperIconItem ui:field="hubscanSeo">
+			                <i:IronIcon src="resources/hubscan.png"/>
+			                <div style="max-width: 170px;">Hub'scan - Crawler for SEO</div>
+			                <p:PaperRipple/>
+			            </p:PaperIconItem>
+	                    <p:PaperIconItem ui:field="hubscanAnalytics">
+			                <i:IronIcon src="resources/hubscan.png"/>
+			                <div style="max-width: 170px;">Hub'scan - Crawler for Analytics</div>
+			                <p:PaperRipple/>
+			            </p:PaperIconItem>
+					</i:IronCollapse>
+                    <p:PaperIconItem ui:field="taggingMailTest">
+                        <i:IronIcon icon="mail"/>
+                        <div>Tagging Mail Test</div>
                         <p:PaperRipple/>
                     </p:PaperIconItem>
                     <p:PaperIconItem ui:field="menuSettings">
