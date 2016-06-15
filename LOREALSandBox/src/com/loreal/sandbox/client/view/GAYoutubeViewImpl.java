@@ -5,23 +5,23 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-public class HomeViewImpl extends Composite implements HomeView {
+public class GAYoutubeViewImpl extends Composite implements GAYoutubeView {
 
-	private static HomeImplUiBinder uiBinder = GWT.create(HomeImplUiBinder.class);
+	private static GAYoutubeViewImplUiBinder uiBinder = GWT.create(GAYoutubeViewImplUiBinder.class);
 
 	@SuppressWarnings("unused")
 	private Presenter presenter;
 
-	interface HomeImplUiBinder extends UiBinder<Widget, HomeViewImpl> {
+	interface GAYoutubeViewImplUiBinder extends UiBinder<Widget, GAYoutubeViewImpl> {
 	}
 
-	public HomeViewImpl() {
+	public GAYoutubeViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
-
 	}
 
 	@Override
 	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
 	}
+
 }

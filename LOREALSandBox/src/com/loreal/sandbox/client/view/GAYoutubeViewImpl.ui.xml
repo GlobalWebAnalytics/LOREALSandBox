@@ -3,8 +3,9 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:l="urn:import:com.loreal.sandbox.client.widget">
 	<ui:style>
+	
 	</ui:style>
 	<g:HTMLPanel>
-		<l:Item></l:Item>
-    </g:HTMLPanel>
+		<l:Content></l:Content>
+	</g:HTMLPanel>
 </ui:UiBinder> 

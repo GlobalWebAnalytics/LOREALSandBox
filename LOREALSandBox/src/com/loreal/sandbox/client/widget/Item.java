@@ -12,52 +12,54 @@ import com.vaadin.polymer.paper.widget.PaperCheckbox;
 
 public class Item extends Composite {
 
-    private static ItemUiBinder uiBinder = GWT.create(ItemUiBinder.class);
+	private static ItemUiBinder uiBinder = GWT.create(ItemUiBinder.class);
 
-    interface ItemUiBinder extends UiBinder<Widget, Item> {
-    }
-
-    @UiField
-    Element title;
-    @UiField
-    Element description;
-    @UiField
-    PaperCheckbox done;
-
-    public Item() {
-	initWidget(uiBinder.createAndBindUi(this));
-    }
-
-    @UiHandler("done")
-    protected void change(IronChangeEvent ev) {
-	if (done.getActive()) {
-	    title.addClassName("done");
-	} else {
-	    title.removeClassName("done");
+	interface ItemUiBinder extends UiBinder<Widget, Item> {
 	}
-    }
 
-    public String getTitle() {
-	return title.getInnerText();
-    }
+	@UiField
+	Element title;
+	@UiField
+	Element description;
+	@UiField
+	PaperCheckbox done;
 
-    public void setTitle(String s) {
-	title.setInnerText(s);
-    }
+	public Item() {
+		initWidget(uiBinder.createAndBindUi(this));
+	}
 
-    public String getDescription() {
-	return description.getInnerText();
-    }
+	@UiHandler("done")
+	protected void change(IronChangeEvent ev) {
+		if (done.getActive()) {
+			title.addClassName("done");
+		} else {
+			title.removeClassName("done");
+		}
+	}
 
-    public void setDescription(String s) {
-	description.setInnerText(s);
-    }
+	@Override
+	public String getTitle() {
+		return title.getInnerText();
+	}
 
-    public boolean isDone() {
-	return done.getActive();
-    }
+	@Override
+	public void setTitle(String s) {
+		title.setInnerText(s);
+	}
 
-    public void setDone(boolean b) {
-	done.setActive(b);
-    }
+	public String getDescription() {
+		return description.getInnerText();
+	}
+
+	public void setDescription(String s) {
+		description.setInnerText(s);
+	}
+
+	public boolean isDone() {
+		return done.getActive();
+	}
+
+	public void setDone(boolean b) {
+		done.setActive(b);
+	}
 }

@@ -13,7 +13,7 @@ import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.loreal.sandbox.client.mvp.ClientFactory;
-import com.loreal.sandbox.client.place.GoogleAnalyticsPlace;
+import com.loreal.sandbox.client.place.GAYoutubePlace;
 import com.loreal.sandbox.client.place.HomePlace;
 import com.loreal.sandbox.client.services.TaggingMailService;
 import com.loreal.sandbox.client.services.TaggingMailServiceAsync;
@@ -110,14 +110,13 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 			@Override
 			public void onClick(ClickEvent event) {
 				collapseGoogleAnalytics.toggle();
-				clientFactory.getPlaceController().goTo(new GoogleAnalyticsPlace(""));
 			}
 		});
 
 		videoYoutube.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				addContent();
+				clientFactory.getPlaceController().goTo(new GAYoutubePlace(""));
 			}
 		});
 
@@ -139,15 +138,6 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 				// sendTaggingMailTest();
 			}
 		});
-	}
-
-	private void addContent() {
-		Content c = new Content();
-		int length = content.getWidgetCount();
-		for (int i = 0; i < length; i++) {
-			content.remove(0);
-		}
-		content.add(c);
 	}
 
 	@SuppressWarnings("unused")

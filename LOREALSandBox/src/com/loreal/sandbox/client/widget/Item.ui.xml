@@ -34,7 +34,7 @@
         <div class="vertical-section {style.vertical-section}">
           <h4>
             <p:PaperCheckbox ui:field="done"></p:PaperCheckbox>
-            <span ui:field="title" class='{style.title}'>Go to Google</span>
+            <span ui:field="title" class='{style.title}'>Sand Box</span>
           </h4>
           <div ui:field="description" class='{style.description}'></div>
         </div>

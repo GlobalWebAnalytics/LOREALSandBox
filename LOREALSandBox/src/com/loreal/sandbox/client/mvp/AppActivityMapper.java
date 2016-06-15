@@ -3,8 +3,10 @@ package com.loreal.sandbox.client.mvp;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
+import com.loreal.sandbox.client.activity.GAYoutubeActivity;
 import com.loreal.sandbox.client.activity.GoogleAnalyticsActivity;
 import com.loreal.sandbox.client.activity.HomeActivity;
+import com.loreal.sandbox.client.place.GAYoutubePlace;
 import com.loreal.sandbox.client.place.GoogleAnalyticsPlace;
 import com.loreal.sandbox.client.place.HomePlace;
 
@@ -23,6 +25,8 @@ public class AppActivityMapper implements ActivityMapper {
 			return new HomeActivity((HomePlace) place, clientFactory);
 		} else if (place instanceof GoogleAnalyticsPlace) {
 			return new GoogleAnalyticsActivity((GoogleAnalyticsPlace) place, clientFactory);
+		} else if (place instanceof GAYoutubePlace) {
+			return new GAYoutubeActivity((GAYoutubePlace) place, clientFactory);
 		}
 		return null;
 	}
