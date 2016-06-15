@@ -7,12 +7,12 @@
   </head>
   <body>
   	<script type="text/javascript">
-	  	function getUidParameter(){
+	  	function getUidParameter(parameter){
 	  		var t = location.search.substring(1).split('&');
 	  		var f = [];
 	  		for (var i=0; i<t.length; i++) {
 		  		var x = t[i].split('=');
-		  		if(x[0]=="uid"){
+		  		if(x[0]==parameter){
 			  		return x[1];
 			  	}
 	  		}
@@ -30,7 +30,7 @@
 	  		return isAdBlockEnabled;
 	  	}
 	  	var dataLayer = window["dataLayer"]||[];
-	    dataLayer.push({brand:"GWA",language:"en",country:"world",siteTypeLevel:"testing",pageCategory:"mailonline",adsBlocked:AdBlockEnabled(),uiUser:uiUser});
+	    dataLayer.push({brand:"GWA",language:"en",country:"world",siteTypeLevel:"testing",pageCategory:"mailonline",adsBlocked:AdBlockEnabled(),uiUser:getUidParameter("uid")});
 	    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=

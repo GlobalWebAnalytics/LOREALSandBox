@@ -3,7 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:p="urn:import:com.vaadin.polymer.paper.widget"
     xmlns:i="urn:import:com.vaadin.polymer.iron.widget">
-	<ui:style>
+		<ui:style>
 		.toolbar {
 			background: #4285f4 !important;
 		}
@@ -108,9 +108,16 @@
 					</i:IronCollapse>
                     <p:PaperIconItem ui:field="analytics">
                         <i:IronIcon src="resources/googleAnalyticsPremiumIcon.png"/>
-                        <div>Web Analytics</div>
+                        <div>Google Analytics</div>
                         <p:PaperRipple/>
                     </p:PaperIconItem>
+                    <i:IronCollapse ui:field="collapseGoogleAnalytics">
+	                    <p:PaperIconItem ui:field="videoYoutube">
+			                <i:IronIcon src="resources/youtube.png"/>
+			                <div style="max-width: 170px;">Youtube Video Tracking</div>
+			                <p:PaperRipple/>
+			            </p:PaperIconItem>
+					</i:IronCollapse>
                     <p:PaperIconItem ui:field="enhancedECommerce">
                         <i:IronIcon src="resources/enhancedECommerce.png"/>
                         <div>Enhanced Ecommerce</div>
@@ -161,5 +168,9 @@
             	<p:PaperFab ui:field="addButton" icon="add" addStyleNames="add"/>
 	      </div>
         </p:PaperDrawerPanel>
+        <p:PaperDialog ui:field="notImplementedDialog" withBackdrop="true" entryAnimation="scale-up-animation" exitAnimation="fade-out-animation">
+            <h2>Feature Not Implemented</h2>
+            <p ui:field="notImplementedContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </p:PaperDialog>
     </g:HTMLPanel>
 </ui:UiBinder> 

@@ -16,36 +16,42 @@ public class Content extends Composite {
 
 	interface ContentUiBinder extends UiBinder<HTMLPanel, Content> {
 	}
-	@UiField Button heading1;
-    @UiField IronCollapse collapse1;
-    @UiField Button heading2;
-    @UiField IronCollapse collapse2;
-    @UiField Button heading3;
-    @UiField IronCollapse collapse3;
-    
+
+	@UiField
+	Button heading1;
+	@UiField
+	IronCollapse collapse1;
+	@UiField
+	Button heading2;
+	@UiField
+	IronCollapse collapse2;
+	@UiField
+	Button heading3;
+	@UiField
+	IronCollapse collapse3;
+
 	public Content() {
 		initWidget(uiBinder.createAndBindUi(this));
-		
+
 		heading1.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                collapse1.toggle();
-            }
-        });
+			@Override
+			public void onClick(ClickEvent event) {
+				collapse1.toggle();
+			}
+		});
 
-        heading2.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                collapse2.toggle();
-            }
-        });
+		heading2.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				collapse2.toggle();
+			}
+		});
 
-        heading3.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                collapse3.toggle();
-            }
-        });
+		heading3.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				collapse3.toggle();
+			}
+		});
 	}
-
 }

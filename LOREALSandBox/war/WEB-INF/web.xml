@@ -9,7 +9,7 @@
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>LOREALSandBox.html</welcome-file>
+    <welcome-file>lorealsandbox.html</welcome-file>
   </welcome-file-list>
   
   <!-- Servlets -->
@@ -20,7 +20,19 @@
 
   <servlet-mapping>
     <servlet-name>taggingMailServiceImpl</servlet-name>
-    <url-pattern>/taggingMail/taggingMail</url-pattern>
+    <url-pattern>/lorealsandbox/mail</url-pattern>
   </servlet-mapping>
+  
+  <!-- I18n servlet filter -->
+  <filter>
+    <filter-name>UrlRewriteFilter</filter-name>
+    <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UrlRewriteFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
   
 </web-app>

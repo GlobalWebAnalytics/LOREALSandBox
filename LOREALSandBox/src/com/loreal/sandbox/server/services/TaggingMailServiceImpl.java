@@ -1,7 +1,5 @@
 package com.loreal.sandbox.server.services;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
@@ -55,18 +53,11 @@ public class TaggingMailServiceImpl extends RemoteServiceServlet implements Tagg
 					+ "<p><span>E-mail : thomas.bianconi@loreal.com</span></p>"
 					+ "<img src='http://www.google-analytics.com/collect?v=1&t=event&tid=UA-78569407-1&cid=5d5d918d-1f26-483d-9059-9516d4d48227&uid=12345678&ec=email&ea=open&el=Campaign_Name&dh=loreal-sand-box.appspot.com&dp=/email/campaignname&cn=Campaign_Name&cs=newsletter&cc=Campaign_Content&cm=EML_IMP&cd12=12za22eer456rssqssq565447eezzeaeds45d4sd&cd33=455&il1nm=email&il1pi1id=75889&il1pi1nm=Productname&z=random_number'/>";
 			// @formatter:on
-			byte[] attachmentData = null; // ...
 			Multipart mp = new MimeMultipart();
 
 			MimeBodyPart htmlPart = new MimeBodyPart();
 			htmlPart.setContent(htmlBody, "text/html");
 			mp.addBodyPart(htmlPart);
-
-			MimeBodyPart attachment = new MimeBodyPart();
-			InputStream attachmentDataStream = new ByteArrayInputStream(attachmentData);
-			attachment.setFileName("manual.pdf");
-			attachment.setContent(attachmentDataStream, "application/pdf");
-			mp.addBodyPart(attachment);
 
 			msg.setContent(mp);
 			// [END multipart_example]

@@ -3,6 +3,9 @@
   "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
 <module rename-to='lorealsandbox'>
   <inherits name='com.google.gwt.user.User'/>
+  <inherits name="com.google.gwt.activity.Activity" />
+  <inherits name="com.google.gwt.event.Event" />
+  <inherits name="com.google.gwt.place.Place" />
   <inherits name="com.vaadin.polymer.Elements"/>
 
   <!-- Specify the app entry point class.                         -->
@@ -11,6 +14,28 @@
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
   <source path='shared'/>
+  
+  <!-- Use ClientFactoryImpl by default -->
+  <replace-with class="com.loreal.sandbox.client.mvp.ClientFactoryImpl">
+    <when-type-is class="com.loreal.sandbox.client.mvp.ClientFactory"/>
+  </replace-with>  
+
+  <replace-with class="com.loreal.sandbox.client.history.Html5Historian"> 
+    <when-type-is class="com.google.gwt.place.shared.PlaceHistoryHandler.DefaultHistorian"/>
+    <any>
+      <when-property-is name="user.agent" value="gecko1_8"/>
+      <when-property-is name="user.agent" value="safari"/>
+      <when-property-is name="user.agent" value="opera"/>
+    </any>
+  </replace-with>   
+  <replace-with class="com.loreal.sandbox.client.history.HashBangHistorian"> 
+    <when-type-is class="com.google.gwt.place.shared.PlaceHistoryHandler.DefaultHistorian"/>
+    <any>
+      <when-property-is name="user.agent" value="ie6"/>
+      <when-property-is name="user.agent" value="ie8"/>
+      <when-property-is name="user.agent" value="ie9"/>
+    </any>
+  </replace-with>
 
   <!-- allow Super Dev Mode -->
   <add-linker name="xsiframe"/>
