@@ -23,6 +23,7 @@ public class GAYoutubeActivity extends AbstractActivity implements Presenter {
 	public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
 		GAYoutubeView gAYoutubeView = clientFactory.getGAYoutubeView();
 		gAYoutubeView.setPresenter(this);
+		pushDataLayer(clientFactory.getFirstLoad());
 		containerWidget.setWidget(gAYoutubeView.asWidget());
 	}
 
@@ -33,4 +34,20 @@ public class GAYoutubeActivity extends AbstractActivity implements Presenter {
 	public void goTo(Place place) {
 		clientFactory.getPlaceController().goTo(place);
 	}
+
+	private native void pushDataLayer(boolean firstLoad) /*-{
+		$wnd["dataLayer"] = $wnd["dataLayer"] || [];
+		if (firstLoad) {
+			$wnd.dataLayer.push({
+				pageCategory : "google analytics"
+			});
+		} else {
+			$wnd.dataLayer.push({
+				event : "updatevirtualpath",
+				pageCategory : "google analytics",
+				virtualPageUrl : "/googleanalytics/youtubetracking/",
+				virtualPageTitle : $wnd.document.title
+			});
+		}
+	}-*/;
 }

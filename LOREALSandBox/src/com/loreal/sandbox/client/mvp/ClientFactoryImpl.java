@@ -14,9 +14,14 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	private final EventBus eventBus = new SimpleEventBus();
 	private final PlaceController placeController = new PlaceController(eventBus);
+
+	// Views
 	private final HomeView homeView = new HomeViewImpl();
 	private final GoogleAnalyticsView googleAnalyticsView = new GoogleAnalyticsViewImpl();
 	private final GAYoutubeView gAYoutubeView = new GAYoutubeViewImpl();
+
+	// GTM vars
+	boolean firstLoad = true;
 
 	@Override
 	public EventBus getEventBus() {
@@ -41,6 +46,16 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public GAYoutubeView getGAYoutubeView() {
 		return gAYoutubeView;
+	}
+
+	@Override
+	public boolean getFirstLoad() {
+		return firstLoad;
+	}
+
+	@Override
+	public void loaded() {
+		firstLoad = false;
 	}
 
 }

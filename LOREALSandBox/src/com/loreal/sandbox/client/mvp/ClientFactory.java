@@ -16,4 +16,8 @@ public interface ClientFactory {
 	GoogleAnalyticsView getGoogleAnalyticsView();
 
 	GAYoutubeView getGAYoutubeView();
+
+	boolean getFirstLoad();
+
+	void loaded();
 }

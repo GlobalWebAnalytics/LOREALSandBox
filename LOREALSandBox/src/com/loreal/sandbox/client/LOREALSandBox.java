@@ -6,6 +6,10 @@ import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.NodeList;
+import com.google.gwt.dom.client.ScriptElement;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
@@ -57,5 +61,36 @@ public class LOREALSandBox implements EntryPoint {
 		RootPanel.get().add(appWidget);
 		// Goes to the place represented on URL else default place
 		historyHandler.handleCurrentHistory();
+		initGoogleTagManager("GTM-5T89DP");
+		clientFactory.loaded();
 	}
+
+	private void initGoogleTagManager(String gtmId) {
+		setGtmVars();
+
+		Document doc = Document.get();
+		ScriptElement script = doc.createScriptElement();
+		script.setSrc("//www.googletagmanager.com/gtm.js?id=" + gtmId);
+		script.setType("text/javascript");
+		script.setLang("javascript");
+		script.setAttribute("async", "true");
+		doc.getBody().appendChild(script);
+
+		NodeList<Element> headElement = doc.getElementsByTagName("script");
+		Element firstScript = headElement.getItem(0);
+
+		insertGtm(script, firstScript);
+	}
+
+	private static native void setGtmVars() /*-{
+		$wnd["dataLayer"] = $wnd["dataLayer"] || [];
+		$wnd.dataLayer.push({
+			'gtm.start' : new Date().getTime(),
+			event : 'gtm.js'
+		});
+	}-*/;
+
+	private static native void insertGtm(ScriptElement j, Element f) /*-{
+		f.parentNode.insertBefore(j, f);
+	}-*/;
 }

@@ -23,6 +23,7 @@ public class GoogleAnalyticsActivity extends AbstractActivity implements Present
 	public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
 		GoogleAnalyticsView googleAnalyticsView = clientFactory.getGoogleAnalyticsView();
 		googleAnalyticsView.setPresenter(this);
+		pushDataLayer(clientFactory.getFirstLoad());
 		containerWidget.setWidget(googleAnalyticsView.asWidget());
 	}
 
@@ -33,4 +34,20 @@ public class GoogleAnalyticsActivity extends AbstractActivity implements Present
 	public void goTo(Place place) {
 		clientFactory.getPlaceController().goTo(place);
 	}
+
+	private native void pushDataLayer(boolean firstLoad) /*-{
+		$wnd["dataLayer"] = $wnd["dataLayer"] || [];
+		if (firstLoad) {
+			$wnd.dataLayer.push({
+				pageCategory : "google analytics"
+			});
+		} else {
+			$wnd.dataLayer.push({
+				event : "updatevirtualpath",
+				pageCategory : "google analytics",
+				virtualPageUrl : "/googleanalytics/",
+				virtualPageTitle : $wnd.document.title
+			});
+		}
+	}-*/;
 }

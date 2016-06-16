@@ -23,6 +23,7 @@ public class HomeActivity extends AbstractActivity implements Presenter {
 	public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
 		HomeView homeView = clientFactory.getHomeView();
 		homeView.setPresenter(this);
+		pushDataLayer(clientFactory.getFirstLoad());
 		containerWidget.setWidget(homeView.asWidget());
 	}
 
@@ -33,4 +34,20 @@ public class HomeActivity extends AbstractActivity implements Presenter {
 	public void goTo(Place place) {
 		clientFactory.getPlaceController().goTo(place);
 	}
+
+	private native void pushDataLayer(boolean firstLoad) /*-{
+		$wnd["dataLayer"] = $wnd["dataLayer"] || [];
+		if (firstLoad) {
+			$wnd.dataLayer.push({
+				pageCategory : "home"
+			});
+		} else {
+			$wnd.dataLayer.push({
+				event : "updatevirtualpath",
+				pageCategory : "home",
+				virtualPageUrl : "/home/",
+				virtualPageTitle : $wnd.document.title
+			});
+		}
+	}-*/;
 }
