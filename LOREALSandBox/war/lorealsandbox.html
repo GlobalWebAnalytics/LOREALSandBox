@@ -32,9 +32,8 @@
 	  		document.body.removeChild(ad);
 	  		return isAdBlockEnabled;
 	  	}
-	  	var dataLayer = window["dataLayer"]||[];
-	  	var uiUser = getUidParameter()||"";
-	    dataLayer.push({brand:"GWA",language:"en",country:"world",siteTypeLevel:"testing",adsBlocked:AdBlockEnabled(),uiUser:uiUser});
+	  	var uiUser = getUidParameter();
+	  	var adsBlocked = AdBlockEnabled();
     </script>
   </body>
 </html>

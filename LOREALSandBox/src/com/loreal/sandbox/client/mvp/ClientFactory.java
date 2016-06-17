@@ -5,6 +5,7 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.loreal.sandbox.client.view.GAYoutubeView;
 import com.loreal.sandbox.client.view.GoogleAnalyticsView;
 import com.loreal.sandbox.client.view.HomeView;
+import com.loreal.sandbox.shared.model.DataLayer;
 
 public interface ClientFactory {
 	EventBus getEventBus();
@@ -20,4 +21,6 @@ public interface ClientFactory {
 	boolean getFirstLoad();
 
 	void loaded();
+
+	DataLayer getDataLayer();
 }

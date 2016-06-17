@@ -39,15 +39,16 @@ public class LOREALSandBox implements EntryPoint {
 						return null;
 					}
 				});
-
 	}
 
 	private void startApplication() {
 		ClientFactory clientFactory = GWT.create(ClientFactory.class);
 		appWidget = new Main();
 		appWidget.setClientFactory(clientFactory);
+
 		EventBus eventBus = clientFactory.getEventBus();
 		PlaceController placeController = clientFactory.getPlaceController();
+
 		// Start ActivityManager for the main widget with our ActivityMapper
 		ActivityMapper activityMapper = new AppActivityMapper(clientFactory);
 		ActivityManager activityManager = new ActivityManager(activityMapper, eventBus);

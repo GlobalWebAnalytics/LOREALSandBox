@@ -9,6 +9,8 @@ import com.loreal.sandbox.client.view.GoogleAnalyticsView;
 import com.loreal.sandbox.client.view.GoogleAnalyticsViewImpl;
 import com.loreal.sandbox.client.view.HomeView;
 import com.loreal.sandbox.client.view.HomeViewImpl;
+import com.loreal.sandbox.shared.model.Brand;
+import com.loreal.sandbox.shared.model.DataLayer;
 
 public class ClientFactoryImpl implements ClientFactory {
 
@@ -22,6 +24,17 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	// GTM vars
 	boolean firstLoad = true;
+	DataLayer dataLayer = new DataLayer();
+
+	ClientFactoryImpl() {
+		dataLayer.setAdsBlocked(nativeAdsBlocked());
+		dataLayer.setBrand(Brand.GWA);
+		dataLayer.setCountry("world");
+		dataLayer.setLanguage("en");
+		dataLayer.setSiteTypeLevel("guideline");
+		dataLayer.setUiUser(nativeUiUser());
+		dataLayer.push();
+	}
 
 	@Override
 	public EventBus getEventBus() {
@@ -58,4 +71,16 @@ public class ClientFactoryImpl implements ClientFactory {
 		firstLoad = false;
 	}
 
+	@Override
+	public DataLayer getDataLayer() {
+		return dataLayer;
+	}
+
+	private native boolean nativeAdsBlocked() /*-{
+		return $wnd.adsBlocked;
+	}-*/;
+
+	private native String nativeUiUser() /*-{
+		return $wnd.uiUser;
+	}-*/;
 }

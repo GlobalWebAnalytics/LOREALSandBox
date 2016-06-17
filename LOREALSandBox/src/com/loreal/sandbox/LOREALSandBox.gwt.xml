@@ -7,6 +7,7 @@
   <inherits name="com.google.gwt.event.Event" />
   <inherits name="com.google.gwt.place.Place" />
   <inherits name="com.vaadin.polymer.Elements"/>
+  <inherits name='com.google.gwt.json.JSON'/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.loreal.sandbox.client.LOREALSandBox'/>
@@ -39,5 +40,6 @@
 
   <!-- allow Super Dev Mode -->
   <add-linker name="xsiframe"/>
+  <set-property-fallback name="user.agent" value="safari"/>
   <collapse-all-properties />
 </module>

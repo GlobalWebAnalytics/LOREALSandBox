@@ -1,6 +1,7 @@
 package com.loreal.sandbox.client.activity;
 
 import com.google.gwt.activity.shared.AbstractActivity;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
@@ -8,9 +9,11 @@ import com.loreal.sandbox.client.mvp.ClientFactory;
 import com.loreal.sandbox.client.place.GAYoutubePlace;
 import com.loreal.sandbox.client.view.GAYoutubeView;
 import com.loreal.sandbox.client.view.Presenter;
+import com.loreal.sandbox.shared.model.DataLayer;
 
 public class GAYoutubeActivity extends AbstractActivity implements Presenter {
 	private ClientFactory clientFactory;
+	private DataLayer dataLayer;
 
 	public GAYoutubeActivity(GAYoutubePlace place, ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
@@ -23,7 +26,16 @@ public class GAYoutubeActivity extends AbstractActivity implements Presenter {
 	public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
 		GAYoutubeView gAYoutubeView = clientFactory.getGAYoutubeView();
 		gAYoutubeView.setPresenter(this);
-		pushDataLayer(clientFactory.getFirstLoad());
+		Document.get().setTitle("LOREAL Sand Box - Google Analytics Tracking for Youtube Video");
+
+		dataLayer = new DataLayer();
+		setDataLayer();
+		if (clientFactory.getFirstLoad()) {
+			dataLayer.push();
+		} else {
+			dataLayer.pushPageView();
+		}
+
 		containerWidget.setWidget(gAYoutubeView.asWidget());
 	}
 
@@ -33,6 +45,16 @@ public class GAYoutubeActivity extends AbstractActivity implements Presenter {
 	@Override
 	public void goTo(Place place) {
 		clientFactory.getPlaceController().goTo(place);
+	}
+
+	private void setDataLayer() {
+		dataLayer.setPageCategory("google analytics");
+		if (clientFactory.getFirstLoad()) {
+			// Do nothing
+		} else {
+			dataLayer.setVirtualPageUrl("/googleanalytics/youtubetracking/");
+			dataLayer.setVirtualPageTitle(Document.get().getTitle());
+		}
 	}
 
 	private native void pushDataLayer(boolean firstLoad) /*-{

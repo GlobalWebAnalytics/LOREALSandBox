@@ -1,6 +1,7 @@
 package com.loreal.sandbox.client.activity;
 
 import com.google.gwt.activity.shared.AbstractActivity;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
@@ -8,9 +9,11 @@ import com.loreal.sandbox.client.mvp.ClientFactory;
 import com.loreal.sandbox.client.place.GoogleAnalyticsPlace;
 import com.loreal.sandbox.client.view.GoogleAnalyticsView;
 import com.loreal.sandbox.client.view.Presenter;
+import com.loreal.sandbox.shared.model.DataLayer;
 
 public class GoogleAnalyticsActivity extends AbstractActivity implements Presenter {
 	private ClientFactory clientFactory;
+	private DataLayer dataLayer;
 
 	public GoogleAnalyticsActivity(GoogleAnalyticsPlace place, ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
@@ -23,7 +26,16 @@ public class GoogleAnalyticsActivity extends AbstractActivity implements Present
 	public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
 		GoogleAnalyticsView googleAnalyticsView = clientFactory.getGoogleAnalyticsView();
 		googleAnalyticsView.setPresenter(this);
-		pushDataLayer(clientFactory.getFirstLoad());
+		Document.get().setTitle("LOREAL Sand Box - Google Analytics");
+
+		dataLayer = new DataLayer();
+		setDataLayer();
+		if (clientFactory.getFirstLoad()) {
+			dataLayer.push();
+		} else {
+			dataLayer.pushPageView();
+		}
+
 		containerWidget.setWidget(googleAnalyticsView.asWidget());
 	}
 
@@ -35,19 +47,13 @@ public class GoogleAnalyticsActivity extends AbstractActivity implements Present
 		clientFactory.getPlaceController().goTo(place);
 	}
 
-	private native void pushDataLayer(boolean firstLoad) /*-{
-		$wnd["dataLayer"] = $wnd["dataLayer"] || [];
-		if (firstLoad) {
-			$wnd.dataLayer.push({
-				pageCategory : "google analytics"
-			});
+	private void setDataLayer() {
+		dataLayer.setPageCategory("google analytics");
+		if (clientFactory.getFirstLoad()) {
+			// Do nothing
 		} else {
-			$wnd.dataLayer.push({
-				event : "updatevirtualpath",
-				pageCategory : "google analytics",
-				virtualPageUrl : "/googleanalytics/",
-				virtualPageTitle : $wnd.document.title
-			});
+			dataLayer.setVirtualPageUrl("/googleanalytics/");
+			dataLayer.setVirtualPageTitle(Document.get().getTitle());
 		}
-	}-*/;
+	}
 }
