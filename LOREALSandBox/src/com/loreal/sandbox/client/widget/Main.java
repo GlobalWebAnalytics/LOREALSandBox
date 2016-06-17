@@ -135,12 +135,13 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 								+ "We have troubleshit with service in server side. "
 								+ "You can use : http://mailchimp.com/ or https://aws.amazon.com/ses/ to test it.");
 				notImplementedDialog.open();
+				pushEvent("Feature Not Implemented", "Send Testing Mail",
+						"PaperDialog Testing Mail Feature Not Implemented");
 				// sendTaggingMailTest();
 			}
 		});
 	}
 
-	@SuppressWarnings("unused")
 	private void sendTaggingMailTest() {
 		taggingMailSvc.sendMail("", new AsyncCallback<Void>() {
 			@Override
@@ -177,4 +178,13 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 	public void setClientFactory(ClientFactory cf) {
 		clientFactory = cf;
 	}
+
+	private native void pushEvent(String category, String action, String label) /*-{
+		$wnd["dataLayer"] = $wnd["dataLayer"] || [];
+		$wnd.dataLayer.push({
+			eventCategory : category,
+			eventAction : action,
+			eventLabel : label
+		});
+	}-*/;
 }
