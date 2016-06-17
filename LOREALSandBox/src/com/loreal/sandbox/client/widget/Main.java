@@ -112,7 +112,6 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 				collapseGoogleAnalytics.toggle();
 			}
 		});
-
 		videoYoutube.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {

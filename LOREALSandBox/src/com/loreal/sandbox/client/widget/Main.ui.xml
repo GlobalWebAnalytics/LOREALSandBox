@@ -4,6 +4,11 @@
 	xmlns:p="urn:import:com.vaadin.polymer.paper.widget"
     xmlns:i="urn:import:com.vaadin.polymer.iron.widget">
 		<ui:style>
+		a{
+			color: inherit;
+			background-color: inherit;
+			text-decoration: inherit;
+		}
 		.toolbar {
 			background: #4285f4 !important;
 		}
@@ -45,11 +50,13 @@
             <div drawer="">
                 <p:PaperHeaderPanel mode="seamed">
                     <p:PaperToolbar/>
-                    <p:PaperIconItem ui:field="home">
-                        <i:IronIcon icon="home"/>
-                        <div>Home</div>
-                        <p:PaperRipple/>
-                    </p:PaperIconItem>
+                    <a href="/home/" onclick="event.preventDefault();">
+	                    <p:PaperIconItem ui:field="home">
+	                        <i:IronIcon icon="home"/>
+	                        <div>Home</div>
+	                        <p:PaperRipple/>
+	                    </p:PaperIconItem>
+                    </a>
                     <p:PaperIconItem ui:field="dashboard">
                         <i:IronIcon icon="dashboard"/>
                         <div>Dashboard</div>
@@ -112,11 +119,13 @@
                         <p:PaperRipple/>
                     </p:PaperIconItem>
                     <i:IronCollapse ui:field="collapseGoogleAnalytics">
-	                    <p:PaperIconItem ui:field="videoYoutube">
-			                <i:IronIcon src="resources/youtube.png"/>
-			                <div style="max-width: 170px;">Youtube Video Tracking</div>
-			                <p:PaperRipple/>
-			            </p:PaperIconItem>
+	                    <a href="/googleanalytics/youtubetracking/" onclick="event.preventDefault();">
+		                    <p:PaperIconItem ui:field="videoYoutube">
+				                <i:IronIcon src="resources/youtube.png"/>
+				                <div style="max-width: 170px;">Youtube Video Tracking</div>
+				                <p:PaperRipple/>
+				            </p:PaperIconItem>
+			            </a>
 					</i:IronCollapse>
                     <p:PaperIconItem ui:field="enhancedECommerce">
                         <i:IronIcon src="resources/enhancedECommerce.png"/>
