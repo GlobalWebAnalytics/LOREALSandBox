@@ -25,22 +25,19 @@ public abstract class CustomHistorian implements Historian, HasValueChangeHandle
 	}
 
 	/**
-	 * This method is responsible for adding an event to list when we go back in
-	 * history
+	 * This method is responsible for adding an event to list when we go back in history
 	 */
 	protected abstract void addHistoryEventHandler();
 
 	/**
-	 * This method is responsible for extracting the path to use as history from
-	 * the url.
+	 * This method is responsible for extracting the path to use as history from the url.
 	 */
 	protected abstract String getPath(String path, String hash);
 
 	/**
 	 * The separator used to divide from the url and the place from gwt.
 	 * 
-	 * Example: A hashbang history would return "!/", so the uri ends up being
-	 * "/#!/" plus the uri.
+	 * Example: A hashbang history would return "!/", so the uri ends up being "/#!/" plus the uri.
 	 */
 	protected abstract String getUrlSeparator();
 
@@ -50,8 +47,7 @@ public abstract class CustomHistorian implements Historian, HasValueChangeHandle
 	protected abstract void goTo(String url);
 
 	/**
-	 * This method is responsible for reading the browser url and converting it
-	 * into a token that GWT Places can use.
+	 * This method is responsible for reading the browser url and converting it into a token that GWT Places can use.
 	 * 
 	 * The token must be in the format of "prefix:value"
 	 * 
@@ -59,6 +55,7 @@ public abstract class CustomHistorian implements Historian, HasValueChangeHandle
 	 */
 	@Override
 	public final String getToken() {
+
 		String path = getWindowLocationPath();
 		String hash = getWindowLocationHash();
 		if (!isBlank(hash)) {
@@ -72,20 +69,25 @@ public abstract class CustomHistorian implements Historian, HasValueChangeHandle
 		}
 
 		String gwtPlaceToken = fromPathToToken(getPath(path, hash));
+		// TODO : Clean
+		consoleLog("1.5 - gwtPlaceToken return : " + gwtPlaceToken);
 
 		// in here we should have "prefix:value"
 		// ensure value is url decoded
 		if (!isBlank(gwtPlaceToken) && !gwtPlaceToken.equals(":")) {
 			String[] s = gwtPlaceToken.split(":");
+			// TODO : Clean
+			consoleLog("2 - gwtPlaceToken return : " + s[0] + ":" + (s.length == 2 ? URL.decodeQueryString(s[1]) : ""));
 			return s[0] + ":" + (s.length == 2 ? URL.decodeQueryString(s[1]) : "");
 		} else {
+			// TODO : Clean
+			consoleLog("2 - gwtPlaceToken return : \"\" ");
 			return "";
 		}
 	}
 
 	/**
-	 * This method generates the url that will be used for updating the browser
-	 * url.
+	 * This method generates the url that will be used for updating the browser url.
 	 * 
 	 * @return A full path valid url properly escaped
 	 */
@@ -113,7 +115,7 @@ public abstract class CustomHistorian implements Historian, HasValueChangeHandle
 	/**
 	 * input: "a/b" output: "a:b"
 	 * 
-	 * input: "a/b/" output: "a:b"
+	 * input: "a/b/" output: "a/b:"
 	 * 
 	 * input: "a/b/c" output: "a/b:c"
 	 * 
@@ -123,19 +125,17 @@ public abstract class CustomHistorian implements Historian, HasValueChangeHandle
 	 */
 	private String fromPathToToken(String path) {
 		if (!isBlank(path)) {
-			String colon;
-			if (path.endsWith("/") && path.length() > 1) {
-				path = path.substring(0, path.length() - 2);
-			}
+			path = path.substring(1, path.length());
+			String placeToken;
 			int i = path.lastIndexOf('/');
 			if (i != -1) {
 				StringBuilder sb = new StringBuilder(path);
 				sb.setCharAt(i, ':');
-				colon = sb.toString();
+				placeToken = sb.toString();
 			} else {
-				colon = path + ":";
+				placeToken = path + ":";
 			}
-			return colon;
+			return placeToken;
 		}
 		return "";
 	}
@@ -177,4 +177,8 @@ public abstract class CustomHistorian implements Historian, HasValueChangeHandle
 		return s == null || s.trim().equals("");
 	}
 
+	// TODO : clean
+	private native void consoleLog(String s) /*-{
+		$wnd.console.log(s);
+	}-*/;
 }

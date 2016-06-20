@@ -21,6 +21,7 @@
     <when-type-is class="com.loreal.sandbox.client.mvp.ClientFactory"/>
   </replace-with>  
 
+  <!-- HTML 5 Historian -->
   <replace-with class="com.loreal.sandbox.client.history.Html5Historian"> 
     <when-type-is class="com.google.gwt.place.shared.PlaceHistoryHandler.DefaultHistorian"/>
     <any>

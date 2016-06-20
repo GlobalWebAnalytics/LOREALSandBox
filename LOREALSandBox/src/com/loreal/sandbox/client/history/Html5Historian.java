@@ -3,15 +3,12 @@ package com.loreal.sandbox.client.history;
 import com.google.gwt.place.shared.PlaceHistoryHandler.Historian;
 
 /**
- * A replacement for {@link Historian} that uses HTML5 History API,
- * {@code pushState} and {@code onpopstate}.
+ * A replacement for {@link Historian} that uses HTML5 History API, {@code pushState} and {@code onpopstate}.
  *
  * @see https://developer.mozilla.org/en/DOM/Manipulating_the_browser_history
- * @see https://github.com/balupton/history.js/wiki/The-State-of-the-HTML5-
- *      History-API
+ * @see https://github.com/balupton/history.js/wiki/The-State-of-the-HTML5- History-API
  * 
- * @see https://groups.google.com/forum/?fromgroups#!topic/google-web-toolkit/
- *      xsf_GCnH36Q
+ * @see https://groups.google.com/forum/?fromgroups#!topic/google-web-toolkit/ xsf_GCnH36Q
  * @see https://gist.github.com/1883821
  * @see http://groups.google.com/group/google-web-toolkit/browse_thread/thread/
  *      919a7847e0d5370c/d647f781023e41b2?lnk=gst&amp;q=pushstate&pli=1
@@ -27,8 +24,12 @@ public class Html5Historian extends CustomHistorian {
 			// replace the state so we can get rid of the hashbang and get the
 			// real url
 			replaceState(hash);
+			// TODO : clean
+			consoleLog("1 - Html5Historian getPath return hash : " + hash);
 			return hash;
 		} else {
+			// TODO : clean
+			consoleLog("1 - Html5Historian getPath return path : " + path);
 			return path;
 		}
 	}
@@ -40,6 +41,8 @@ public class Html5Historian extends CustomHistorian {
 
 	@Override
 	protected void goTo(String url) {
+		// TODO : clean
+		consoleLog("Html5Historian pushState(url) : " + url);
 		pushState(url);
 	}
 
@@ -65,4 +68,7 @@ public class Html5Historian extends CustomHistorian {
 		});
 	}-*/;
 
+	private native void consoleLog(String s) /*-{
+		$wnd.console.log(s);
+	}-*/;
 }
