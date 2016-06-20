@@ -69,19 +69,13 @@ public abstract class CustomHistorian implements Historian, HasValueChangeHandle
 		}
 
 		String gwtPlaceToken = fromPathToToken(getPath(path, hash));
-		// TODO : Clean
-		consoleLog("1.5 - gwtPlaceToken return : " + gwtPlaceToken);
 
 		// in here we should have "prefix:value"
 		// ensure value is url decoded
 		if (!isBlank(gwtPlaceToken) && !gwtPlaceToken.equals(":")) {
 			String[] s = gwtPlaceToken.split(":");
-			// TODO : Clean
-			consoleLog("2 - gwtPlaceToken return : " + s[0] + ":" + (s.length == 2 ? URL.decodeQueryString(s[1]) : ""));
 			return s[0] + ":" + (s.length == 2 ? URL.decodeQueryString(s[1]) : "");
 		} else {
-			// TODO : Clean
-			consoleLog("2 - gwtPlaceToken return : \"\" ");
 			return "";
 		}
 	}
@@ -176,9 +170,4 @@ public abstract class CustomHistorian implements Historian, HasValueChangeHandle
 	protected static boolean isBlank(String s) {
 		return s == null || s.trim().equals("");
 	}
-
-	// TODO : clean
-	private native void consoleLog(String s) /*-{
-		$wnd.console.log(s);
-	}-*/;
 }

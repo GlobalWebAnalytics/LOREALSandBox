@@ -24,12 +24,8 @@ public class Html5Historian extends CustomHistorian {
 			// replace the state so we can get rid of the hashbang and get the
 			// real url
 			replaceState(hash);
-			// TODO : clean
-			consoleLog("1 - Html5Historian getPath return hash : " + hash);
 			return hash;
 		} else {
-			// TODO : clean
-			consoleLog("1 - Html5Historian getPath return path : " + path);
 			return path;
 		}
 	}
@@ -41,8 +37,6 @@ public class Html5Historian extends CustomHistorian {
 
 	@Override
 	protected void goTo(String url) {
-		// TODO : clean
-		consoleLog("Html5Historian pushState(url) : " + url);
 		pushState(url);
 	}
 
