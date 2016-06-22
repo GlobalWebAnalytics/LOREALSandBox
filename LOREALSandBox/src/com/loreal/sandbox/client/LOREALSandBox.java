@@ -18,7 +18,6 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.loreal.sandbox.client.mvp.AppActivityMapper;
 import com.loreal.sandbox.client.mvp.AppPlaceHistoryMapper;
 import com.loreal.sandbox.client.mvp.ClientFactory;
-import com.loreal.sandbox.client.place.GAYoutubePlace;
 import com.loreal.sandbox.client.place.HomePlace;
 import com.loreal.sandbox.client.widget.Main;
 import com.vaadin.polymer.Polymer;
@@ -63,9 +62,6 @@ public class LOREALSandBox implements EntryPoint {
 		RootPanel.get().add(appWidget);
 		// Goes to the place represented on URL else default place
 		historyHandler.handleCurrentHistory();
-		if (historyMapper.getPlace("googleanalytics/youtubetracking:") instanceof GAYoutubePlace) {
-			consoleLog("GAYoutubePlace");
-		}
 		initGoogleTagManager("GTM-5T89DP");
 		clientFactory.loaded();
 	}
@@ -97,10 +93,5 @@ public class LOREALSandBox implements EntryPoint {
 
 	private static native void insertGtm(ScriptElement j, Element f) /*-{
 		f.parentNode.insertBefore(j, f);
-	}-*/;
-
-	// TODO : clean
-	private native void consoleLog(String s) /*-{
-		$wnd.console.log(s);
 	}-*/;
 }

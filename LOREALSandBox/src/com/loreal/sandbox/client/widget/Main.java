@@ -13,8 +13,11 @@ import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.loreal.sandbox.client.mvp.ClientFactory;
+import com.loreal.sandbox.client.place.GAFiltersPlace;
 import com.loreal.sandbox.client.place.GAYoutubePlace;
 import com.loreal.sandbox.client.place.HomePlace;
+import com.loreal.sandbox.client.services.GoogleAnalyticsServices;
+import com.loreal.sandbox.client.services.GoogleAnalyticsServicesAsync;
 import com.loreal.sandbox.client.services.TaggingMailService;
 import com.loreal.sandbox.client.services.TaggingMailServiceAsync;
 import com.vaadin.polymer.iron.widget.IronCollapse;
@@ -28,6 +31,7 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 
 	private ClientFactory clientFactory;
 	private TaggingMailServiceAsync taggingMailSvc = GWT.create(TaggingMailService.class);
+	private GoogleAnalyticsServicesAsync googleAnalyticsSvc = GWT.create(GoogleAnalyticsServices.class);
 	Widget widget;
 
 	interface MainUiBinder extends UiBinder<Widget, Main> {
@@ -61,6 +65,10 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 	IronCollapse collapseGoogleAnalytics;
 	@UiField
 	PaperIconItem videoYoutube;
+	@UiField
+	PaperIconItem createfilters;
+	@UiField
+	PaperIconItem googleAnalyticsApi;
 
 	@UiField
 	PaperIconItem test;
@@ -116,6 +124,29 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 			@Override
 			public void onClick(ClickEvent event) {
 				clientFactory.getPlaceController().goTo(new GAYoutubePlace(""));
+			}
+		});
+		googleAnalyticsApi.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				googleAnalyticsSvc.getAccount(new AsyncCallback<Void>() {
+					@Override
+					public void onFailure(Throwable caught) {
+						googleAnalyticsApi.setTitle("API Failed : " + caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(Void result) {
+						googleAnalyticsApi.setTitle("API Success");
+					}
+				});
+			}
+		});
+
+		createfilters.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				clientFactory.getPlaceController().goTo(new GAFiltersPlace(""));
 			}
 		});
 

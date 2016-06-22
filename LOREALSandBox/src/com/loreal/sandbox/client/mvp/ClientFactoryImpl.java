@@ -3,6 +3,8 @@ package com.loreal.sandbox.client.mvp;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
+import com.loreal.sandbox.client.view.GAFiltersView;
+import com.loreal.sandbox.client.view.GAFiltersViewImpl;
 import com.loreal.sandbox.client.view.GAYoutubeView;
 import com.loreal.sandbox.client.view.GAYoutubeViewImpl;
 import com.loreal.sandbox.client.view.GoogleAnalyticsView;
@@ -20,7 +22,8 @@ public class ClientFactoryImpl implements ClientFactory {
 	// Views
 	private final HomeView homeView = new HomeViewImpl();
 	private final GoogleAnalyticsView googleAnalyticsView = new GoogleAnalyticsViewImpl();
-	private final GAYoutubeView gAYoutubeView = new GAYoutubeViewImpl();
+	private final GAYoutubeView gaYoutubeView = new GAYoutubeViewImpl();
+	private final GAFiltersView gaFiltersView = new GAFiltersViewImpl();
 
 	// GTM vars
 	boolean firstLoad = true;
@@ -58,7 +61,13 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	@Override
 	public GAYoutubeView getGAYoutubeView() {
-		return gAYoutubeView;
+		return gaYoutubeView;
+	}
+
+	@Override
+	public GAFiltersView getGAFiltersView() {
+		// TODO Auto-generated method stub
+		return gaFiltersView;
 	}
 
 	@Override

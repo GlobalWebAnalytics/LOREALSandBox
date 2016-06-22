@@ -126,6 +126,18 @@
 				                <p:PaperRipple/>
 				            </p:PaperIconItem>
 			            </a>
+			            <a href="/googleanalytics/createfilters/" onclick="event.preventDefault();">
+		                    <p:PaperIconItem ui:field="createfilters">
+				                <i:IronIcon src="/resources/googleAnalyticsPremiumIcon.png"/>
+				                <div style="max-width: 170px;">Create Filter</div>
+				                <p:PaperRipple/>
+				            </p:PaperIconItem>
+			            </a>
+			            <p:PaperIconItem ui:field="googleAnalyticsApi">
+				                <i:IronIcon src="/resources/googleAnalyticsPremiumIcon.png"/>
+				                <div style="max-width: 170px;">Google Analytics API</div>
+				                <p:PaperRipple/>
+				            </p:PaperIconItem>
 					</i:IronCollapse>
                     <p:PaperIconItem ui:field="enhancedECommerce">
                         <i:IronIcon src="/resources/enhancedECommerce.png"/>

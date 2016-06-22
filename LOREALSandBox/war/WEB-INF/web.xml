@@ -22,6 +22,15 @@
     <servlet-name>taggingMailServiceImpl</servlet-name>
     <url-pattern>/lorealsandbox/mail</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>googleAnalyticsServicesImpl</servlet-name>
+    <servlet-class>com.loreal.sandbox.server.services.GoogleAnalyticsServicesImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>googleAnalyticsServicesImpl</servlet-name>
+    <url-pattern>/lorealsandbox/ga</url-pattern>
+  </servlet-mapping>
   
   <!-- HTML5 filter -->
   <filter>
