@@ -17,9 +17,11 @@ import com.loreal.sandbox.shared.model.DataLayer;
 public class GAFiltersActivity extends AbstractActivity implements Presenter {
 	private ClientFactory clientFactory;
 	private DataLayer dataLayer;
+	private String canonical;
 
 	public GAFiltersActivity(GAFiltersPlace place, ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
+		this.canonical = clientFactory.getCanonical(place);
 	}
 
 	/**
@@ -30,6 +32,7 @@ public class GAFiltersActivity extends AbstractActivity implements Presenter {
 		GAFiltersView gaFiltersView = clientFactory.getGAFiltersView();
 		gaFiltersView.setPresenter(this);
 		Document.get().setTitle("LOREAL Sand Box - Google Analytics Create Filters");
+		Document.get().getElementById("canonical").setAttribute("href", canonical);
 
 		dataLayer = new DataLayer();
 		setDataLayer();
@@ -58,7 +61,7 @@ public class GAFiltersActivity extends AbstractActivity implements Presenter {
 		if (clientFactory.getFirstLoad()) {
 			// Do nothing
 		} else {
-			dataLayer.setVirtualPageUrl("/googleanalytics/createfilters/");
+			dataLayer.setVirtualPageUrl(canonical);
 			dataLayer.setVirtualPageTitle(Document.get().getTitle());
 		}
 	}

@@ -14,9 +14,11 @@ import com.loreal.sandbox.shared.model.DataLayer;
 public class GAYoutubeActivity extends AbstractActivity implements Presenter {
 	private ClientFactory clientFactory;
 	private DataLayer dataLayer;
+	private String canonical;
 
 	public GAYoutubeActivity(GAYoutubePlace place, ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
+		this.canonical = clientFactory.getCanonical(place);
 	}
 
 	/**
@@ -27,6 +29,7 @@ public class GAYoutubeActivity extends AbstractActivity implements Presenter {
 		GAYoutubeView gAYoutubeView = clientFactory.getGAYoutubeView();
 		gAYoutubeView.setPresenter(this);
 		Document.get().setTitle("LOREAL Sand Box - Google Analytics Tracking for Youtube Video");
+		Document.get().getElementById("canonical").setAttribute("href", canonical);
 
 		dataLayer = new DataLayer();
 		setDataLayer();
@@ -52,7 +55,7 @@ public class GAYoutubeActivity extends AbstractActivity implements Presenter {
 		if (clientFactory.getFirstLoad()) {
 			// Do nothing
 		} else {
-			dataLayer.setVirtualPageUrl("/googleanalytics/youtubetracking/");
+			dataLayer.setVirtualPageUrl(canonical);
 			dataLayer.setVirtualPageTitle(Document.get().getTitle());
 		}
 	}
@@ -67,9 +70,13 @@ public class GAYoutubeActivity extends AbstractActivity implements Presenter {
 			$wnd.dataLayer.push({
 				event : "updatevirtualpath",
 				pageCategory : "google analytics",
-				virtualPageUrl : "/googleanalytics/youtubetracking/",
+				virtualPageUrl : canonical,
 				virtualPageTitle : $wnd.document.title
 			});
 		}
+	}-*/;
+
+	private native void consoleLog(String s) /*-{
+		$wnd.console.log(s);
 	}-*/;
 }

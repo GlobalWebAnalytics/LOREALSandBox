@@ -50,7 +50,7 @@
             <div drawer="">
                 <p:PaperHeaderPanel mode="seamed">
                     <p:PaperToolbar/>
-                    <a href="/home/" onclick="event.preventDefault();">
+                    <a href="/" onclick="event.preventDefault();">
 	                    <p:PaperIconItem ui:field="home">
 	                        <i:IronIcon icon="home"/>
 	                        <div>Home</div>

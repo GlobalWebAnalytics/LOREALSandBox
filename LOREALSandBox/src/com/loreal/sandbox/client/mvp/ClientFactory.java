@@ -1,5 +1,6 @@
 package com.loreal.sandbox.client.mvp;
 
+import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
 import com.loreal.sandbox.client.view.GAFiltersView;
@@ -26,4 +27,8 @@ public interface ClientFactory {
 	void loaded();
 
 	DataLayer getDataLayer();
+
+	void setHistoryMapper(AppPlaceHistoryMapper historyMapper);
+
+	String getCanonical(Place place);
 }

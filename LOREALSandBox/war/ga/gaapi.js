@@ -19,7 +19,7 @@
         console.log("response.error");
       }
       else {
-    	console.log("response.success");
+    	document.querySelector("#mainContainer paper-icon-item").setAttribute("hidden", "true");
         queryAccounts();
       }
     });

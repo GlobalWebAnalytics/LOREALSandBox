@@ -1,5 +1,6 @@
 package com.loreal.sandbox.client.mvp;
 
+import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
@@ -24,6 +25,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private final GoogleAnalyticsView googleAnalyticsView = new GoogleAnalyticsViewImpl();
 	private final GAYoutubeView gaYoutubeView = new GAYoutubeViewImpl();
 	private final GAFiltersView gaFiltersView = new GAFiltersViewImpl();
+	private AppPlaceHistoryMapper historyMapper;
 
 	// GTM vars
 	boolean firstLoad = true;
@@ -83,6 +85,28 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public DataLayer getDataLayer() {
 		return dataLayer;
+	}
+
+	@Override
+	public void setHistoryMapper(AppPlaceHistoryMapper historyMapper) {
+		this.historyMapper = historyMapper;
+	}
+
+	@Override
+	public String getCanonical(Place place) {
+		String canonical = "/";
+		if (historyMapper != null) {
+			canonical = historyMapper.getToken(place);
+			if (canonical != null) {
+				if (!canonical.equalsIgnoreCase("")) {
+					canonical = canonical.substring(0, canonical.indexOf(":"));
+					canonical = "/" + canonical + "/";
+				}
+			} else {
+				canonical = "/";
+			}
+		}
+		return canonical;
 	}
 
 	private native boolean nativeAdsBlocked() /*-{

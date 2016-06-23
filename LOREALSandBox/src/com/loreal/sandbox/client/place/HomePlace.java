@@ -15,7 +15,7 @@ public class HomePlace extends Place {
 		return name;
 	}
 
-	@Prefix("home")
+	@Prefix("")
 	public static class Tokenizer implements PlaceTokenizer<HomePlace> {
 		@Override
 		public String getToken(HomePlace place) {

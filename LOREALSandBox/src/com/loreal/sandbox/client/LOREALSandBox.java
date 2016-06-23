@@ -60,6 +60,8 @@ public class LOREALSandBox implements EntryPoint {
 		historyHandler.register(placeController, eventBus, defaultPlace);
 
 		RootPanel.get().add(appWidget);
+		// Register historyMapper in clientFactory before Activity is called
+		clientFactory.setHistoryMapper(historyMapper);
 		// Goes to the place represented on URL else default place
 		historyHandler.handleCurrentHistory();
 		initGoogleTagManager("GTM-5T89DP");

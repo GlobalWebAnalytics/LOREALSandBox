@@ -14,9 +14,11 @@ import com.loreal.sandbox.shared.model.DataLayer;
 public class HomeActivity extends AbstractActivity implements Presenter {
 	private ClientFactory clientFactory;
 	private DataLayer dataLayer;
+	private String canonical;
 
 	public HomeActivity(HomePlace place, ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
+		this.canonical = clientFactory.getCanonical(place);
 	}
 
 	/**
@@ -27,6 +29,7 @@ public class HomeActivity extends AbstractActivity implements Presenter {
 		HomeView homeView = clientFactory.getHomeView();
 		homeView.setPresenter(this);
 		Document.get().setTitle("LOREAL Sand Box");
+		Document.get().getElementById("canonical").setAttribute("href", canonical);
 
 		dataLayer = new DataLayer();
 		setDataLayer();
@@ -52,7 +55,7 @@ public class HomeActivity extends AbstractActivity implements Presenter {
 		if (clientFactory.getFirstLoad()) {
 			// Do nothing
 		} else {
-			dataLayer.setVirtualPageUrl("/home/");
+			dataLayer.setVirtualPageUrl(canonical);
 			dataLayer.setVirtualPageTitle(Document.get().getTitle());
 		}
 	}

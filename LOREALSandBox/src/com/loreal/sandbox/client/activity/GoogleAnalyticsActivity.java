@@ -14,9 +14,11 @@ import com.loreal.sandbox.shared.model.DataLayer;
 public class GoogleAnalyticsActivity extends AbstractActivity implements Presenter {
 	private ClientFactory clientFactory;
 	private DataLayer dataLayer;
+	private String canonical;
 
 	public GoogleAnalyticsActivity(GoogleAnalyticsPlace place, ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
+		this.canonical = clientFactory.getCanonical(place);
 	}
 
 	/**
@@ -27,6 +29,7 @@ public class GoogleAnalyticsActivity extends AbstractActivity implements Present
 		GoogleAnalyticsView googleAnalyticsView = clientFactory.getGoogleAnalyticsView();
 		googleAnalyticsView.setPresenter(this);
 		Document.get().setTitle("LOREAL Sand Box - Google Analytics");
+		Document.get().getElementById("canonical").setAttribute("href", canonical);
 
 		dataLayer = new DataLayer();
 		setDataLayer();
@@ -52,7 +55,7 @@ public class GoogleAnalyticsActivity extends AbstractActivity implements Present
 		if (clientFactory.getFirstLoad()) {
 			// Do nothing
 		} else {
-			dataLayer.setVirtualPageUrl("/googleanalytics/");
+			dataLayer.setVirtualPageUrl(canonical);
 			dataLayer.setVirtualPageTitle(Document.get().getTitle());
 		}
 	}
