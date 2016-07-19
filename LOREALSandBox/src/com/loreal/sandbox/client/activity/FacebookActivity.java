@@ -28,7 +28,7 @@ public class FacebookActivity extends AbstractActivity implements Presenter {
 	public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
 		FacebookView FacebookView = clientFactory.getFacebookView();
 		FacebookView.setPresenter(this);
-		Document.get().setTitle("LOREAL Sand Box");
+		Document.get().setTitle("LOREAL Sand Box - Facebook Conversion Tracking");
 		Document.get().getElementById("canonical").setAttribute("href", canonical);
 
 		dataLayer = new DataLayer();
@@ -51,7 +51,7 @@ public class FacebookActivity extends AbstractActivity implements Presenter {
 	}
 
 	private void setDataLayer() {
-		dataLayer.setPageCategory("Facebook");
+		dataLayer.setPageCategory("facebook");
 		if (clientFactory.getFirstLoad()) {
 			// Do nothing
 		} else {

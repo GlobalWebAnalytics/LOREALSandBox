@@ -257,6 +257,7 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 	private native void pushEvent(String category, String action, String label) /*-{
 		$wnd["dataLayer"] = $wnd["dataLayer"] || [];
 		$wnd.dataLayer.push({
+			event : "uaevent",
 			eventCategory : category,
 			eventAction : action,
 			eventLabel : label
