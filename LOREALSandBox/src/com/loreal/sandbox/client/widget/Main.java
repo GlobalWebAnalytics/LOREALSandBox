@@ -1,6 +1,7 @@
 package com.loreal.sandbox.client.widget;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.HeadingElement;
 import com.google.gwt.dom.client.ParagraphElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -13,6 +14,7 @@ import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.loreal.sandbox.client.mvp.ClientFactory;
+import com.loreal.sandbox.client.place.FacebookPlace;
 import com.loreal.sandbox.client.place.GAFiltersPlace;
 import com.loreal.sandbox.client.place.GAYoutubePlace;
 import com.loreal.sandbox.client.place.HomePlace;
@@ -23,6 +25,7 @@ import com.loreal.sandbox.client.services.TaggingMailServiceAsync;
 import com.vaadin.polymer.iron.widget.IronCollapse;
 import com.vaadin.polymer.paper.widget.PaperDialog;
 import com.vaadin.polymer.paper.widget.PaperDrawerPanel;
+import com.vaadin.polymer.paper.widget.PaperFab;
 import com.vaadin.polymer.paper.widget.PaperIconItem;
 
 public class Main extends Composite implements IsWidget, HasOneWidget {
@@ -60,6 +63,13 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 	IronCollapse collapseDoubleClick;
 
 	@UiField
+	PaperIconItem media;
+	@UiField
+	IronCollapse collapseMedia;
+	@UiField
+	PaperIconItem facebook;
+
+	@UiField
 	PaperIconItem analytics;
 	@UiField
 	IronCollapse collapseGoogleAnalytics;
@@ -77,6 +87,12 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 
 	@UiField
 	PaperIconItem taggingMailTest;
+
+	@UiField
+	PaperFab interestingFeature;
+
+	@UiField
+	HeadingElement notImplementedTitle;
 
 	@UiField
 	PaperDialog notImplementedDialog;
@@ -111,6 +127,19 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 			@Override
 			public void onClick(ClickEvent event) {
 				collapseDoubleClick.toggle();
+			}
+		});
+
+		media.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				collapseMedia.toggle();
+			}
+		});
+		facebook.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				clientFactory.getPlaceController().goTo(new FacebookPlace(""));
 			}
 		});
 
@@ -160,14 +189,30 @@ public class Main extends Composite implements IsWidget, HasOneWidget {
 		taggingMailTest.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
+				notImplementedTitle.setInnerText("Send Testing Mail Feature");
 				notImplementedContent
 						.setInnerText("Mail campaign for testing the tracking of mail campaign is not yet implemented. "
 								+ "We have troubleshit with service in server side. "
 								+ "You can use : http://mailchimp.com/ or https://aws.amazon.com/ses/ to test it.");
+				notImplementedContent
+						.setInnerHTML("Mail campaign for testing the tracking of mail campaign is not yet implemented. "
+								+ "We have troubleshit with service in server side. "
+								+ "You can use : <a href='http://mailchimp.com/' target='_blank'>MailChimp</a> or <a href='https://aws.amazon.com/ses/' target='_blank'>Amazon Simple Email Service</a> to test it.");
 				notImplementedDialog.open();
 				pushEvent("Feature Not Implemented", "Send Testing Mail",
 						"PaperDialog Testing Mail Feature Not Implemented");
 				// sendTaggingMailTest();
+			}
+		});
+
+		interestingFeature.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				notImplementedTitle.setInnerText("Interesting Feature");
+				notImplementedContent.setInnerText(
+						"Congratulations, you are interested by this awesome feature. Stay tuned, it will come soon.");
+				notImplementedDialog.open();
+				pushEvent("Feature Not Implemented", "Interesting Feature", "Media Goal Conversion");
 			}
 		});
 	}

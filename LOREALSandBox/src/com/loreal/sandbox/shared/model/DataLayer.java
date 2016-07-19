@@ -16,7 +16,7 @@ public class DataLayer implements Serializable {
 	String siteTypeLevel = null;
 	String uiUser = null;
 	String pageCategory = null;
-	String virtualPageUrl = null;
+	String virtualPageURL = null;
 	String virtualPageTitle = null;
 
 	public DataLayer() {
@@ -33,8 +33,8 @@ public class DataLayer implements Serializable {
 		if (pageCategory != null) {
 			dataLayerObject.put("pageCategory", new JSONString(pageCategory));
 		}
-		if (virtualPageUrl != null) {
-			dataLayerObject.put("virtualPageUrl", new JSONString(virtualPageUrl));
+		if (virtualPageURL != null) {
+			dataLayerObject.put("virtualPageURL", new JSONString(virtualPageURL));
 		}
 		if (virtualPageTitle != null) {
 			dataLayerObject.put("virtualPageTitle", new JSONString(virtualPageTitle));
@@ -95,12 +95,12 @@ public class DataLayer implements Serializable {
 		this.pageCategory = pageCategory;
 	}
 
-	public String getVirtualPageUrl() {
-		return virtualPageUrl;
+	public String getvirtualPageURL() {
+		return virtualPageURL;
 	}
 
-	public void setVirtualPageUrl(String virtualPageUrl) {
-		this.virtualPageUrl = virtualPageUrl;
+	public void setVirtualPageUrl(String virtualPageURL) {
+		this.virtualPageURL = virtualPageURL;
 	}
 
 	public String getVirtualPageTitle() {

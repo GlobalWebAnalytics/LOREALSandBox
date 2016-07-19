@@ -4,6 +4,8 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
+import com.loreal.sandbox.client.view.FacebookView;
+import com.loreal.sandbox.client.view.FacebookViewImpl;
 import com.loreal.sandbox.client.view.GAFiltersView;
 import com.loreal.sandbox.client.view.GAFiltersViewImpl;
 import com.loreal.sandbox.client.view.GAYoutubeView;
@@ -25,6 +27,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private final GoogleAnalyticsView googleAnalyticsView = new GoogleAnalyticsViewImpl();
 	private final GAYoutubeView gaYoutubeView = new GAYoutubeViewImpl();
 	private final GAFiltersView gaFiltersView = new GAFiltersViewImpl();
+	private final FacebookView facebookView = new FacebookViewImpl();
 	private AppPlaceHistoryMapper historyMapper;
 
 	// GTM vars
@@ -68,8 +71,12 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	@Override
 	public GAFiltersView getGAFiltersView() {
-		// TODO Auto-generated method stub
 		return gaFiltersView;
+	}
+
+	@Override
+	public FacebookView getFacebookView() {
+		return facebookView;
 	}
 
 	@Override

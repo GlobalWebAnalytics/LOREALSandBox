@@ -3,6 +3,7 @@ package com.loreal.sandbox.client.mvp;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
+import com.loreal.sandbox.client.view.FacebookView;
 import com.loreal.sandbox.client.view.GAFiltersView;
 import com.loreal.sandbox.client.view.GAYoutubeView;
 import com.loreal.sandbox.client.view.GoogleAnalyticsView;
@@ -21,6 +22,8 @@ public interface ClientFactory {
 	GAYoutubeView getGAYoutubeView();
 
 	GAFiltersView getGAFiltersView();
+
+	FacebookView getFacebookView();
 
 	boolean getFirstLoad();
 

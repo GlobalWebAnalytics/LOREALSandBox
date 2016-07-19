@@ -51,7 +51,7 @@ public enum Brand {
 	YSL("YSL Beauty","YSL"),
 	YSI("Yue Sai","YSI"),
 	
-	GWA("Global Website Abbrevation","GWA");
+	GWA("Global Web Analytics","GWA");
 	//@formatter:on
 
 	private String name = "";

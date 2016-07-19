@@ -9,6 +9,10 @@
 			background-color: inherit;
 			text-decoration: inherit;
 		}
+		
+		paper-dialog a{
+			text-decoration: underline;
+		}
 		.toolbar {
 			background: #4285f4 !important;
 		}
@@ -113,6 +117,20 @@
 			                <p:PaperRipple/>
 			            </p:PaperIconItem>
 					</i:IronCollapse>
+					<p:PaperIconItem ui:field="media">
+                        <i:IronIcon icon="perm-media"/>
+                        <div>Media</div>
+                        <p:PaperRipple/>
+                    </p:PaperIconItem>
+                    <i:IronCollapse ui:field="collapseMedia">
+                   		<a href="/media/facebook/" onclick="event.preventDefault();">
+		                    <p:PaperIconItem ui:field="facebook">
+				                <i:IronIcon src="/resources/facebook.png"/>
+				                <div style="max-width: 170px;">Facebook Conversion Tracking</div>
+				                <p:PaperRipple/>
+				            </p:PaperIconItem>
+				        </a>
+					</i:IronCollapse>
                     <p:PaperIconItem ui:field="analytics">
                         <i:IronIcon src="/resources/googleAnalyticsPremiumIcon.png"/>
                         <div>Google Analytics</div>
@@ -186,11 +204,11 @@
             		</p:PaperToolbar>
             		<g:HTMLPanel ui:field="content"  addStyleNames="{style.content} vertical center-justified layout"/>
             	</p:PaperHeaderPanel>
-            	<p:PaperFab ui:field="addButton" icon="add" addStyleNames="add"/>
+            	<p:PaperFab ui:field="interestingFeature" icon="question-answer" addStyleNames="add"/>
 	      </div>
         </p:PaperDrawerPanel>
         <p:PaperDialog ui:field="notImplementedDialog" withBackdrop="true" entryAnimation="scale-up-animation" exitAnimation="fade-out-animation">
-            <h2>Feature Not Implemented</h2>
+            <h2 ui:field="notImplementedTitle">Feature Not Implemented</h2>
             <p ui:field="notImplementedContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </p:PaperDialog>
     </g:HTMLPanel>

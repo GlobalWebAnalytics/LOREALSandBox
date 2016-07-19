@@ -1,0 +1,54 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:i="urn:import:com.vaadin.polymer.iron.widget">
+	<ui:style>
+		@external .done;
+	    .item .done {
+	      text-decoration: line-through;
+	    }
+	    .title {
+	      padding-left: 20px;
+	      font-size: 150%;
+	      font-weight: normal;
+	    }
+	    .description{
+			margin-top: 15px;
+			padding-left: 40px;
+		}
+		.description a{
+			text-decoration: underline;
+		}
+		.vertical-section{
+			background-color: white;
+			padding: 24px;
+			margin: 0 24px 24px 24px;
+			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+			padding: 8px 15px 8px 15px !important;
+			margin-bottom: 10px !important;
+		}
+		
+		.vertical-section h4{
+			margin: 0;
+		}
+	</ui:style>
+	<g:HTMLPanel addStyleNames="vertical center-justified layout {style.item}">
+        <div class="vertical-section {style.vertical-section}">
+          <h4>
+            <span ui:field="title" class='{style.title}'>Facebook Conversion Tracking</span>
+          </h4>
+        <div ui:field="description" class='{style.description}'>
+        	<a href="https://www.facebook.com/business/a/online-sales/conversion-tracking" target="_blank">Facebook Conversion tracking</a> allow to measure the result of your Facebook ads.
+        	When you create a Facebook advertising you have to define :
+        	<ul>
+	        	<li>goal of this advertising</li>
+	        	<li>how to measure it</li>
+        	</ul>
+        	<h4>
+        		<span>Use Case :</span>
+        	</h4>
+        	We create a Facebook advertising wich has to bring users to this page and encourage them to click on the button <i:IronIcon icon="question-answer"/>.
+        </div>
+      </div>
+    </g:HTMLPanel>
+</ui:UiBinder> 
