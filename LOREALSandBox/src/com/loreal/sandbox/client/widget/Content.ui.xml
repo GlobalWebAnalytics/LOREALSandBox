@@ -28,13 +28,7 @@
     <g:HTMLPanel addStyleNames="collapse-sample">
         <g:Button ui:field="heading1" addStyleNames="{style.heading}">Youtube Video Iframe 1</g:Button>
         <i:IronCollapse ui:field="collapse1">
-	        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZePy5Dxb1w8" onload="var dataLayer=window['dataLayer']||[];
-	        dataLayer.push({
-	        	event : 'uaevent',
-	        	eventCategory : 'Youtube',
-	        	eventAction : 'Youtube video loaded',
-	        	eventLabel : 'Listen Youtube'
-	        });"></iframe>
+	        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZePy5Dxb1w8"></iframe>
             <div class="{style.content}">
                 <div>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea, id minim maiestatis incorrupte duo. Dolorum verterem ad ius, his et nullam verterem. Eu alia debet usu, an doming tritani est. Vix ad ponderum petentium suavitate, eum eu tempor populo, graece sententiae constituam vim ex. Cu torquatos reprimique neglegentur nec, voluptua periculis has ut, at eos discere deleniti sensibus. Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea, id minim maiestatis incorrupte duo. Dolorum verterem ad ius, his et nullam verterem. Eu alia debet usu, an doming tritani est. Vix ad ponderum petentium suavitate, eum eu tempor populo, graece sententiae constituam vim ex. Cu torquatos reprimique neglegentur nec, voluptua periculis has ut, at eos discere deleniti sensibus.</div>
             </div>
@@ -42,13 +36,7 @@
 
         <g:Button ui:field="heading2" addStyleNames="{style.heading}">Youtube Video Iframe 2</g:Button>
         <i:IronCollapse ui:field="collapse2">
-        	<iframe width="560" height="315" src="https://www.youtube.com/embed/W6qj7pezBd0" onload="var dataLayer=window['dataLayer']||[];
-	        dataLayer.push({
-	        	event : 'uaevent',
-	        	eventCategory : 'Youtube',
-	        	eventAction : 'Youtube video loaded',
-	        	eventLabel : 'Listen Youtube'
-	        });"></iframe>
+        	<iframe width="560" height="315" src="https://www.youtube.com/embed/W6qj7pezBd0"></iframe>
 	        <div class="{style.content}">
                 <div>Pro saepe pertinax ei, ad pri animal labores suscipiantur. Modus commodo minimum eum te, vero utinam assueverit per eu, zril oportere suscipiantur pri te. Partem percipitur deterruisset ad sea, at eam suas luptatum dissentiunt. No error alienum pro, erant senserit ex mei, pri semper alterum no. Ut habemus menandri vulputate mea. Feugiat verterem ut sed. Dolores maiestatis id per. Pro saepe pertinax ei, ad pri animal labores suscipiantur. Modus commodo minimum eum te, vero utinam assueverit per eu, zril oportere suscipiantur pri te. Partem percipitur deterruisset ad sea, at eam suas luptatum dissentiunt. No error alienum pro, erant senserit ex mei, pri semper alterum no. Ut habemus menandri vulputate mea. Feugiat verterem ut sed. Dolores maiestatis id per.</div>
                 <g:Button ui:field="heading3" addStyleNames="{style.heading}">Collapse #3</g:Button>
